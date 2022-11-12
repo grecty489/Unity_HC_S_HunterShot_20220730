@@ -1,17 +1,17 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Collections;
 
 namespace grecty489 
 {
     /// <summary>
-    /// ¾Ç²ß°º¦Pµ{§Ç
+    /// å­¸ç¿’å•åŒç¨‹åº
     /// </summary>
     public class LearnCoroutine : MonoBehaviour
     {
-        // ¡° Åıµ{¦¡µ¥«İ
-        // 1. ¤Ş¥Î ¨t²Î¶°¦X ©R¦WªÅ¶¡
-        // 2. ©w¸q¦^¶Ç IEunmerator ªº¤èªk
-        // 3. ¨Ï¥Î StartCoroutine ±Ò°Ê
+        // â€» è®“ç¨‹å¼ç­‰å¾…
+        // 1. å¼•ç”¨ ç³»çµ±é›†åˆ å‘½åç©ºé–“
+        // 2. å®šç¾©å›å‚³ IEunmerator çš„æ–¹æ³•
+        // 3. ä½¿ç”¨ StartCoroutine å•Ÿå‹•
 
         private void Awake()
         {
@@ -20,9 +20,9 @@ namespace grecty489
 
         private IEnumerator Test() 
         {
-            print("²Ä¤@¬qµ{¦¡");
+            print("ç¬¬ä¸€æ®µç¨‹å¼");
             yield return new WaitForSeconds(2);
-            print("¨â¬í«á°õ¦æ¡A²Ä¤G¬qµ{¦¡");
+            print("å…©ç§’å¾ŒåŸ·è¡Œï¼Œç¬¬äºŒæ®µç¨‹å¼");
         }
     }
 }

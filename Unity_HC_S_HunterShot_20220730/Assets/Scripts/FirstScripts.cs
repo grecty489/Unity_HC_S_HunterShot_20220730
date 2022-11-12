@@ -1,35 +1,35 @@
-using UnityEngine;// ¤Ş¥Î unity ¤ŞÀº¹CÀ¸©R¦WªÅ¶¡ ¡G­Ü®w¹ê¥Î¸ê®Æ»P¥\¯à
+ï»¿using UnityEngine;// å¼•ç”¨ unity å¼•æ“éŠæˆ²å‘½åç©ºé–“ ï¼šå€‰åº«å¯¦ç”¨è³‡æ–™èˆ‡åŠŸèƒ½
 
 namespace grecty489
 {
-    // Unity Ãş§O­n°õ¦æ¥²¶·©ñ¦b¹CÀ¸ª«¥ó¤W
+    // Unity é¡åˆ¥è¦åŸ·è¡Œå¿…é ˆæ”¾åœ¨éŠæˆ²ç‰©ä»¶ä¸Š
     /// <summary>
-    /// ºK­n¡G»²§U»¡©ú
-    /// First Scripts ²Ä¤@­Ó¸}¥» ¾Ç²ß C# °òÂ¦»P Unity
+    /// æ‘˜è¦ï¼šè¼”åŠ©èªªæ˜
+    /// First Scripts ç¬¬ä¸€å€‹è…³æœ¬ å­¸ç¿’ C# åŸºç¤èˆ‡ Unity
     /// </summary>
     public class FirstScripts : MonoBehaviour
     {
-        #region ¸ê®Æ°Ï°ì
-        // ¸ê®Æ
+        #region è³‡æ–™å€åŸŸ
+        // è³‡æ–™
         #endregion
         
-        #region ¨Æ¥ó°Ï°ì¡GUnity ¤J¤f
+        #region äº‹ä»¶å€åŸŸï¼šUnity å…¥å£
         /// <summary>
-        /// ³ê¿ô¨Æ¥ó¡G¹CÀ¸¶}©l®É¦b Star ¤§«e·|°õ¦æ¤@¦¸
+        /// å–šé†’äº‹ä»¶ï¼šéŠæˆ²é–‹å§‹æ™‚åœ¨ Star ä¹‹å‰æœƒåŸ·è¡Œä¸€æ¬¡
         /// </summary>
         private void Awake()
         {
-            print("«¢Åo¡AWorld¡I:D");
+            print("å“ˆå›‰ï¼ŒWorldï¼:D");
         }
         /// <summary>
-        /// ¶}©l¨Æ¥ó¡G¹CÀ¸¶}©l®É¦b Awark ¤§«á·|°õ¦æ¤@¦¸
+        /// é–‹å§‹äº‹ä»¶ï¼šéŠæˆ²é–‹å§‹æ™‚åœ¨ Awark ä¹‹å¾ŒæœƒåŸ·è¡Œä¸€æ¬¡
         /// </summary>
         private void Start()
         {
-            print("¶}©l¨Æ¥ó¡I");
+            print("é–‹å§‹äº‹ä»¶ï¼");
             // Rich Text
-            print("<color=orange>¾ï¦â¤å¦r</color>");
-            print("<color=#ff7f50>¬À·ä¬õ</color>");
+            print("<color=orange>æ©˜è‰²æ–‡å­—</color>");
+            print("<color=#ff7f50>çŠç‘šç´…</color>");
         }
         #endregion
     }

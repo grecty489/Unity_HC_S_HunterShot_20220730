@@ -1,37 +1,37 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace grecty489
 {
     /// <summary>
-    /// ¾Ç²ßÄæ¦ì Field
+    /// å­¸ç¿’æ¬„ä½ Field
     /// </summary>
     public class LearnField : MonoBehaviour
     {
-        #region Äæ¦ì»yªk¡B­×¹¢µü»P¥|¤jÃş«¬
-        // Äæ¦ì»yªk¡G
-        // ­×¹¢µü ¸ê®ÆÃş«¬ Äæ¦ì¦WºÙ;
+        #region æ¬„ä½èªæ³•ã€ä¿®é£¾è©èˆ‡å››å¤§é¡å‹
+        // æ¬„ä½èªæ³•ï¼š
+        // ä¿®é£¾è© è³‡æ–™é¡å‹ æ¬„ä½åç¨±;
         private int number;
 
-        // ­×¹¢µü ¸ê®ÆÃş«¬ Äæ¦ì¦W «ü©w ­È;
+        // ä¿®é£¾è© è³‡æ–™é¡å‹ æ¬„ä½å æŒ‡å®š å€¼;
         private int level = 1;
 
-        // ¨p¤H¡G¦¹Ãş§O¥i¥H¦s¨ú¡A¤£·|Åã¥Ü¦bÄİ©Ê­±ªO
+        // ç§äººï¼šæ­¤é¡åˆ¥å¯ä»¥å­˜å–ï¼Œä¸æœƒé¡¯ç¤ºåœ¨å±¬æ€§é¢æ¿
         private int scoreA = 60;
 
-        // ¤½¶}¡G©Ò¦³Ãş§O¥i¥H¦s¨ú¡A·|Åã¥Ü¦bÄİ©Ê­±ªO
-        // ¾ã¼Æ int
+        // å…¬é–‹ï¼šæ‰€æœ‰é¡åˆ¥å¯ä»¥å­˜å–ï¼Œæœƒé¡¯ç¤ºåœ¨å±¬æ€§é¢æ¿
+        // æ•´æ•¸ int
         public int scoreB = 90;
-        // ¯BÂI¼Æ float
+        // æµ®é»æ•¸ float
         public float speed = 3.5f;
-        // ¦r¦ê string
-        public string weapon = "¤õ½bµ©";
-        // ¥¬ªL­È bool
+        // å­—ä¸² string
+        public string weapon = "ç«ç®­ç­’";
+        // å¸ƒæ—å€¼ bool
         public bool isDead = false;
         public bool isGrounded = true;
         #endregion
 
-        #region Unity ±`¥ÎÃş«¬
-        // ¦V¶q Vector
+        #region Unity å¸¸ç”¨é¡å‹
+        // å‘é‡ Vector
         public Vector2 v2Position;
         public Vector2 v2One = Vector2.one;
         public Vector2 v2Custom = new Vector2(3.5f, 7.1f);
@@ -39,43 +39,43 @@ namespace grecty489
         public Vector3 v3Custom = new Vector3(1, 2, 3);
         public Vector4 v4Custom = new Vector4(1.1f, 2.2f, 3.3f, 4.4f);
 
-        // ÃC¦â Color
-        public Color colorDefault;                                 // ³z©ú¶Â
-        public Color colorRed = Color.red;                         // ¯Â¬õ
-        public Color colorCustom = new Color(1, 0, 1);             // ¬õ+ÂÅ
-        public Color colorCustomRGBA = new Color(1, 1, 0, 0.5f);   // ¥b³z©ú¬õ+ºñ
+        // é¡è‰² Color
+        public Color colorDefault;                                 // é€æ˜é»‘
+        public Color colorRed = Color.red;                         // ç´”ç´…
+        public Color colorCustom = new Color(1, 0, 1);             // ç´…+è—
+        public Color colorCustomRGBA = new Color(1, 1, 0, 0.5f);   // åŠé€æ˜ç´…+ç¶ 
 
-        // ¦CÁ|¸ê®Æ¡G«öÁä
+        // åˆ—èˆ‰è³‡æ–™ï¼šæŒ‰éµ
         public KeyCode keyA = KeyCode.A;
         public KeyCode keyJump = KeyCode.Space;
         public KeyCode keyAttack = KeyCode.Mouse0;
 
-        // ¯À§÷Ãş«¬¡GÀx¦s­µ®Ä¡B¹Ï¤ù¡B§÷½è²yµ¥¯À§÷¸ê®Æ
-        // ¤£¯à«ü©w­È¡A¥u¯à³z¹L API ¨ú±o©ÎÄİ©Ê­±ªO©ì¦²
+        // ç´ æé¡å‹ï¼šå„²å­˜éŸ³æ•ˆã€åœ–ç‰‡ã€æè³ªçƒç­‰ç´ æè³‡æ–™
+        // ä¸èƒ½æŒ‡å®šå€¼ï¼Œåªèƒ½é€é API å–å¾—æˆ–å±¬æ€§é¢æ¿æ‹–æ›³
         public AudioClip soundAttack;
         public Sprite pictureWin;
         public Material materialDissolve;
 
-        // ¹CÀ¸ª«¥ó¡G¶¥¼h­±ªO»P±M®×¤ºªºª«¥ó©Î¹w»sª«
+        // éŠæˆ²ç‰©ä»¶ï¼šéšå±¤é¢æ¿èˆ‡å°ˆæ¡ˆå…§çš„ç‰©ä»¶æˆ–é è£½ç‰©
         public GameObject goSoldier;
         public GameObject prefabMarble;
 
-        //¤¸¥ó¡G¹CÀ¸ª«¥ó¤Wªº¥ô¦ó¤¸¥ó¬Ò¥iÀx¦s
+        //å…ƒä»¶ï¼šéŠæˆ²ç‰©ä»¶ä¸Šçš„ä»»ä½•å…ƒä»¶çš†å¯å„²å­˜
         public ParticleSystem psLight;
         public Camera mainCamera;
         #endregion
 
         private void Awake()
         {
-            // ¨ú ¨ú±o¸ê®Æ get
-            // Äæ¦ì¦WºÙ
-            // ¥H Unity Äİ©Ê­±ªO¬°¥D
+            // å– å–å¾—è³‡æ–™ get
+            // æ¬„ä½åç¨±
+            // ä»¥ Unity å±¬æ€§é¢æ¿ç‚ºä¸»
             print(level);
-            print("³t«×" + speed);
+            print("é€Ÿåº¦" + speed);
 
-            // ¦s ¦s©ñ¸ê®Æ set
-            // Äæ¦ì¦WºÙ «ü©w ­È;
-            weapon = "¤âºh¼u";
+            // å­˜ å­˜æ”¾è³‡æ–™ set
+            // æ¬„ä½åç¨± æŒ‡å®š å€¼;
+            weapon = "æ‰‹æ¦´å½ˆ";
             scoreB = 30;
             speed = 5.5f;
             isDead = true;

@@ -1,29 +1,29 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace grecty489
 { 
     /// <summary>
-    /// ¾Ç²ß«DÀRºA API
+    /// å­¸ç¿’ééœæ…‹ API
     /// Properties
     /// Public Methods
     /// </summary>
    public class AIPNonStatic : MonoBehaviour
    {
-        // ÀRºA¡Gstatic ¦s¦b°O¾ĞÅé¤º¡A¸ò¹CÀ¸ª«¥óµLÃö
-        //Time¡BRandom
+        // éœæ…‹ï¼šstatic å­˜åœ¨è¨˜æ†¶é«”å…§ï¼Œè·ŸéŠæˆ²ç‰©ä»¶ç„¡é—œ
+        //Timeã€Random
 
-        //«DÀRºA¡G¹w³]¤£¦s¦b°O¾ĞÅé¤º¡A¸ò¹CÀ¸ª«¥ó¦³Ãö
+        //ééœæ…‹ï¼šé è¨­ä¸å­˜åœ¨è¨˜æ†¶é«”å…§ï¼Œè·ŸéŠæˆ²ç‰©ä»¶æœ‰é—œ
         //Transfrom
 
-        //1. «DÀRºAÄİ©Ê Properties
+        //1. ééœæ…‹å±¬æ€§ Properties
 
-        //1-1 ¨ú±o Get
-        //»yªk¡G
-        //¨BÆJ¤@¡G©w¸qÄæ¦ìÀx¦s¹CÀ¸ª«¥ó
-        //Äæ¦ì¦WºÙ.«DÀRºAÄİ©Ê
+        //1-1 å–å¾— Get
+        //èªæ³•ï¼š
+        //æ­¥é©Ÿä¸€ï¼šå®šç¾©æ¬„ä½å„²å­˜éŠæˆ²ç‰©ä»¶
+        //æ¬„ä½åç¨±.ééœæ…‹å±¬æ€§
 
-        //¨BÆJ¤G¡G½T©w¸Óª«¥ó¦³¦¹¤¸¥ó
-        //¨Ò¦p¡G¿O¥ú Light
+        //æ­¥é©ŸäºŒï¼šç¢ºå®šè©²ç‰©ä»¶æœ‰æ­¤å…ƒä»¶
+        //ä¾‹å¦‚ï¼šç‡ˆå…‰ Light
 
         public Transform traA;
         public Light lightA;
@@ -33,27 +33,27 @@ namespace grecty489
 
         public Transform traBat;
 
-        //1-2 ³]©w Set
-        //»yªk¡G
-        //Äæ¦ì¦WºÙ¡G«DÀRºAÄİ©Ê «ü©w ­È;
+        //1-2 è¨­å®š Set
+        //èªæ³•ï¼š
+        //æ¬„ä½åç¨±ï¼šééœæ…‹å±¬æ€§ æŒ‡å®š å€¼;
 
-        //2. «DÀRºA¤èªk Public Methods
-        //»yªk¡G
-        //Äæ¦ì¦WºÙ¡G«DÀRºA¤èªk(¹ïÀ³ªº¤Ş¼Æ);
+        //2. ééœæ…‹æ–¹æ³• Public Methods
+        //èªæ³•ï¼š
+        //æ¬„ä½åç¨±ï¼šééœæ…‹æ–¹æ³•(å°æ‡‰çš„å¼•æ•¸);
 
         private void Awake()
         {
-            print("®y¼Ğ¡G" + traA.position);
+            print("åº§æ¨™ï¼š" + traA.position);
 
-            print("¿O¥úÃC¦â¡G" + lightA.color);
+            print("ç‡ˆå…‰é¡è‰²ï¼š" + lightA.color);
 
-            //°ß¿WÄİ©Ê¤£¯à³]©w
+            //å”¯ç¨å±¬æ€§ä¸èƒ½è¨­å®š
             //traPlayer.lossyScale = Vector3.one * 3;
 
             traPlayer.localScale = Vector3.one * 3;
 
             camMain.depth = 7;
-            print("Äá¼v¾÷²`«×¡G" + camMain.depth);
+            print("æ”å½±æ©Ÿæ·±åº¦ï¼š" + camMain.depth);
         }
 
             public BoxCollider cube;
@@ -69,9 +69,9 @@ namespace grecty489
         private void Start()
         {
 
-            print("¥ß¤èÅé¸I¼²¾¹¤Ø¤o¡G" + cube.size);
-            print("­µ·½­µ¶q¡G" + aud.volume);
-            print("µe¥¬´è¬V¼Ò¦¡¡G" + canvas.renderMode);
+            print("ç«‹æ–¹é«”ç¢°æ’å™¨å°ºå¯¸ï¼š" + cube.size);
+            print("éŸ³æºéŸ³é‡ï¼š" + aud.volume);
+            print("ç•«å¸ƒæ¸²æŸ“æ¨¡å¼ï¼š" + canvas.renderMode);
 
             cube.center = new Vector3(1, 3, 1);
             aud.volume = 0.5f;
