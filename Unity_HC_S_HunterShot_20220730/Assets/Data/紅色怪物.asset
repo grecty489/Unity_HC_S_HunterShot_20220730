@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 500
   attack: 50
-  prefabCoin: {fileID: 0}
+  prefabCoin: {fileID: 2006817925120030001, guid: 6a90ecb84299e16498477d103ef2cc9a, type: 3}
   coinCount: 30
   coinProbability: 0.8

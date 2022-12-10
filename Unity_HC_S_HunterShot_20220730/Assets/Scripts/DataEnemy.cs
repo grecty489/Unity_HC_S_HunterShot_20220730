@@ -1,25 +1,25 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace grecty489
 {
     /// <summary>
-    /// ©Çª«¸ê®Æ¡G©Çª«¦å¶q¡B§ğÀ»¤O¡B±¼Ä_ª«¥ó¡B¾÷²v
+    /// æ€ªç‰©è³‡æ–™ï¼šæ€ªç‰©è¡€é‡ã€æ”»æ“ŠåŠ›ã€æ‰å¯¶ç‰©ä»¶ã€æ©Ÿç‡
     /// </summary>
-    /// Scriptable Object ¸}¥»¤Æª«¥ó
-    /// ¥Øªº¡G±N¸}¥»ªº¸ê®ÆÀx¦s¦b Project ¤º¤è«KºŞ²z
-    /// CAM «Ø¥ß¯À§÷¿ï³æ
-    /// menuName ¿ï³æ¦WºÙ¡G¥D¿ï³æ/¦¸¿ï³æ/¦¸¦¸¿ï³æ/...
-    /// fileName ÀÉ®×¦WºÙ¡G«ØÄ³¨Ï¥Î­^¤å
+    /// Scriptable Object è…³æœ¬åŒ–ç‰©ä»¶
+    /// ç›®çš„ï¼šå°‡è…³æœ¬çš„è³‡æ–™å„²å­˜åœ¨ Project å…§æ–¹ä¾¿ç®¡ç†
+    /// CAM å»ºç«‹ç´ æé¸å–®
+    /// menuName é¸å–®åç¨±ï¼šä¸»é¸å–®/æ¬¡é¸å–®/æ¬¡æ¬¡é¸å–®/...
+    /// fileName æª”æ¡ˆåç¨±ï¼šå»ºè­°ä½¿ç”¨è‹±æ–‡
     [CreateAssetMenu(menuName = "grecty489/Data Enemy", fileName = "New Data Enemy")]
     public class DataEnemy : ScriptableObject
     {
-        [Header("°ò¥»Äİ©Ê")]
+        [Header("åŸºæœ¬å±¬æ€§")]
         [Range(1, 5000)]
         public float hp;
         [Range(1, 5000)]
         public float attack;
         [Space(20)]
-        [Header("ª÷¹ô¸ê®Æ")]
+        [Header("é‡‘å¹£è³‡æ–™")]
         public GameObject prefabCoin;
         [Range(1, 1000)]
         public int coinCount;
