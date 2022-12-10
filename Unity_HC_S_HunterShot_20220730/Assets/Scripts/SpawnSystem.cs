@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -6,59 +6,59 @@ using UnityEngine;
 namespace grecty489
 {
     /// <summary>
-    /// ¥Í¦¨¨t²Î
+    /// ç”Ÿæˆç³»çµ±
     /// </summary>
     public class SpawnSystem : MonoBehaviour
     {
-        #region ¸ê®Æ
-        [SerializeField, Header("©Çª«¹w»sª«")]
+        #region è³‡æ–™
+        [SerializeField, Header("æ€ªç‰©é è£½ç‰©")]
         private GameObject[] prefabEnemys;
-        [SerializeField, Header("©Çª«¥Í¦¨²Ä¤G±Æ")]
+        [SerializeField, Header("æ€ªç‰©ç”Ÿæˆç¬¬äºŒæ’")]
         private Transform[] traSpawnPoints;
-        [Header("¥Í¦¨¼Æ¶q¡G³Ì¤p»P³Ì¤j­È")]
+        [Header("ç”Ÿæˆæ•¸é‡ï¼šæœ€å°èˆ‡æœ€å¤§å€¼")]
         [SerializeField]
         private int minEnemy = 2;
         [SerializeField]
         private int maxEnemy = 5;
-        [SerializeField, Header("²Ä¤G±Æªº®æ¤l²M³æ")]
+        [SerializeField, Header("ç¬¬äºŒæ’çš„æ ¼å­æ¸…å–®")]
         private List<Transform> listSpawnPoints = new List<Transform>();
-        [SerializeField, Header("¼u¯]®æ¤l")]
+        [SerializeField, Header("å½ˆç æ ¼å­")]
         private GameObject prefabMarble;
         #endregion
 
-        #region ¨Æ¥ó
+        #region äº‹ä»¶
         private void Awake()
         {
             spwanEnemy();
         }
         #endregion
 
-        #region ¤èªk
+        #region æ–¹æ³•
         /// <summary>
-        /// ¥Í¦¨¼Ä¤H
+        /// ç”Ÿæˆæ•µäºº
         /// </summary>
         private void spwanEnemy() 
         {
             int randomCount = Random.Range(minEnemy, maxEnemy + 1);
-            print("<color=blue>¼Ä¤HÀH¾÷¼Æ¶q¡G" + randomCount + "</color>");
+            print("<color=blue>æ•µäººéš¨æ©Ÿæ•¸é‡ï¼š" + randomCount + "</color>");
 
             int countToDelete = traSpawnPoints.Length - randomCount;
-            print("<color=red>­n§R°£ªº¼Æ¶q¡G" + countToDelete + "</color>");
+            print("<color=red>è¦åˆªé™¤çš„æ•¸é‡ï¼š" + countToDelete + "</color>");
 
-            // ²M³æ = °}¦C.Âà¬°²M³æ()¡F
+            // æ¸…å–® = é™£åˆ—.è½‰ç‚ºæ¸…å–®()ï¼›
             listSpawnPoints = traSpawnPoints.ToList();
 
-            // ¨t²Î.ÀH¾÷ ÀH¾÷ = ·s ÀH¾÷ª«¥ó¡F
+            // ç³»çµ±.éš¨æ©Ÿ éš¨æ©Ÿ = æ–° éš¨æ©Ÿç‰©ä»¶ï¼›
             System.Random random = new System.Random();
-            // ¥Í¦¨²M³æ = ¥Í¦¨²M³æ.±Æ§Ç(¨C¤@­Ó²M³æ => ¶Ã§Ç±Æ§Ç).Âà¦^²M³æ¡F
+            // ç”Ÿæˆæ¸…å–® = ç”Ÿæˆæ¸…å–®.æ’åº(æ¯ä¸€å€‹æ¸…å–® => äº‚åºæ’åº).è½‰å›æ¸…å–®ï¼›
             listSpawnPoints = listSpawnPoints.OrderBy(item => random.Next()).ToList();
 
-            // ³z¹L°j°é§R°£²M³æ²Ä¤@µ§
+            // é€éè¿´åœˆåˆªé™¤æ¸…å–®ç¬¬ä¸€ç­†
             for (int i = 0; i < countToDelete; i++) listSpawnPoints.RemoveAt(0);
 
             for (int i = 0; i < randomCount; i++)
             {
-                // ¨ú±o²M³æ¤º²Ä¤G±Æ®æ¤lªº®y¼Ğ
+                // å–å¾—æ¸…å–®å…§ç¬¬äºŒæ’æ ¼å­çš„åº§æ¨™
                 Vector3 pos = listSpawnPoints[i].position;
                 if (i == 0)
                 {
@@ -66,9 +66,9 @@ namespace grecty489
                 }
                 else
                 {
-                    // ÀH¾÷©Çª«
+                    // éš¨æ©Ÿæ€ªç‰©
                     int randomEnemy = Random.Range(0, prefabEnemys.Length);
-                    // ¤É¦¨©Çª«(©Çª«¡A®y¼Ğ¡A¨¤«×¹s)¡F
+                    // å‡æˆæ€ªç‰©(æ€ªç‰©ï¼Œåº§æ¨™ï¼Œè§’åº¦é›¶)ï¼›
                     Instantiate(prefabEnemys[randomEnemy], pos, Quaternion.identity);
                 }
             }
