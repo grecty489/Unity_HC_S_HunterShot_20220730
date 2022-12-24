@@ -134,8 +134,9 @@ namespace grecty489
                         transform.position + Vector3.up * 2,
                         Quaternion.Euler(90, 0, 0));
 
-                    float randomX = Random.Range(-50, 50);
-                    tempCoin.GetComponent<Rigidbody>().AddForce(new Vector3(randomX, 500, -200));
+                    float randomX = Random.Range(-100, 100);
+                    float randomZ = Random.Range(-100, 100);
+                    tempCoin.GetComponent<Rigidbody>().AddForce(new Vector3(randomX, 250, randomZ));
                 }
             }
         }

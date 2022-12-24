@@ -33,6 +33,11 @@ namespace grecty489
         private string perAttact = "觸發攻擊";
         private Animator ani;
         private bool isShooted;
+
+        /// <summary>
+        /// 本回合要增加的彈珠數量
+        /// </summary>
+        public int addMarbleThisTurn;
         #endregion
 
         private void Awake()
@@ -77,7 +82,7 @@ namespace grecty489
 
                 if (Physics.Raycast(ray, out hit, 100, layerGround))
                 {
-                    print("射線碰撞點的物件：" + hit.point);
+                    // print("射線碰撞點的物件：" + hit.point);
 
                     traTarget.position = hit.point;
 
