@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using TMPro;
+using UnityEngine.UI;
 
 namespace grecty489
 {
@@ -9,18 +10,40 @@ namespace grecty489
     /// </summary>
     public class DamageSystem : MonoBehaviour
     {
+        #region 資料
         [SerializeField, Header("畫布傷害值")]
         private GameObject prefabDamage;
         [SerializeField, Header("傷害值位移")]
         private Vector3 offsetDamge;
+        [SerializeField, Header("資料")]
+        private DataEnemy dataEnemy;
+        [SerializeField, Header("動畫控制器")]
+        private Animator ani;
+        [SerializeField, Header("血條")]
+        private Image imgHp;
+        [SerializeField, Header("文字血量")]
+        private TextMeshProUGUI textHp;
+        [SerializeField, Header("碰撞器")]
+        private BoxCollider boxCollider;
+        [SerializeField, Header("怪物模型")]
+        private GameObject modelEnemy;
 
+        private float hp;
+        private float hpMax;
+        private string parDamage = "觸發傷害";
         private string nameMarble = "彈珠";
         private TextMeshProUGUI textDamage;
         private PlayerData playerData;
+        #endregion
 
 
+        #region 事件
         private void Awake()
         {
+            hp = dataEnemy.hp;
+            hpMax = hp;
+            UpdateUI();
+
             // SpawnDamegeObject();
             playerData = GameObject.Find("士兵").GetComponent<PlayerData>();
         }
@@ -47,9 +70,8 @@ namespace grecty489
         private void OnCollisionStay(Collision collision)
         {
 
-        }
-
-
+        } 
+        #endregion
 
         /// <summary>
         /// 生成傷害值物件
@@ -62,10 +84,71 @@ namespace grecty489
                 Quaternion.Euler(60, 0, 0));
 
             textDamage = tempDamage.transform.Find("文字傷害值").GetComponent<TextMeshProUGUI>();
-            textDamage.text ="-" + playerData.attack;
+            float attack = playerData.attack;
+            textDamage.text ="-" + attack;
+            Damage(attack);
 
             StartCoroutine(AnimationEffect(tempDamage));
         }
+
+        /// <summary>
+        /// 受傷
+        /// </summary>
+        /// <param name="attack">接受到的攻擊力</param>
+        private void Damage(float attack) 
+        {
+            hp -= attack;
+            ani.SetTrigger(parDamage);
+            UpdateUI();
+
+            if (hp <= 0) Dead();
+        }
+
+        /// <summary>
+        /// 死亡
+        /// </summary>
+        private void Dead()
+        {
+            hp = 0;
+
+            boxCollider.enabled = false;        // 關閉怪物格子的碰撞器
+            modelEnemy.SetActive(false);        // 隱藏怪物模型
+
+            // 刪除(物件，延遲時間)；
+            // gameObject 此遊戲物件
+            Destroy(gameObject, 2.5f);
+            DropCoin();
+        }
+
+        private void DropCoin()
+        {
+            float random = Random.value;
+            print($"金幣本次機率：{random}");
+
+            if (random <= dataEnemy.coinProbability)
+            {
+                for (int i = 0; i < dataEnemy.coinCount; i++)
+                {
+                    GameObject tempCoin = Instantiate(
+                        dataEnemy.prefabCoin,
+                        transform.position + Vector3.up * 2,
+                        Quaternion.Euler(90, 0, 0));
+
+                    float randomX = Random.Range(-50, 50);
+                    tempCoin.GetComponent<Rigidbody>().AddForce(new Vector3(randomX, 500, -200));
+                }
+            }
+        }
+
+        /// <summary>
+        /// 更新介面
+        /// </summary>
+        private void UpdateUI()
+        {
+            textHp.text = hp.ToString();
+            imgHp.fillAmount = hp / hpMax;
+        }
+
         /// <summary>
         /// 動畫效果
         /// </summary>
