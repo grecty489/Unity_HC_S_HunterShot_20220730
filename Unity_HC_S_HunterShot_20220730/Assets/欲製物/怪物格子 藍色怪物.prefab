@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 5098913349338190728}
   - component: {fileID: 7009394537002066026}
   - component: {fileID: -398016189471865512}
+  - component: {fileID: 6508608080102481117}
   m_Layer: 0
   m_Name: "\u602A\u7269\u683C\u5B50 \u85CD\u8272\u602A\u7269"
-  m_TagString: Untagged
+  m_TagString: "\u602A\u7269"
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,12 +62,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabDamage: {fileID: 4828552636092308466, guid: f50f112cb37f44042a8d038b1ed51d37, type: 3}
   offsetDamge: {x: 0, y: 1, z: 0}
-  dataEnemy: {fileID: 11400000, guid: 59120cd2c7343a346bda7e99a0128816, type: 2}
   ani: {fileID: 8499019800718018087}
   imgHp: {fileID: 6214639535730760844}
   textHp: {fileID: 6214639535949180149}
+  isPlayer: 0
+  dataEnemy: {fileID: 11400000, guid: 59120cd2c7343a346bda7e99a0128816, type: 2}
   boxCollider: {fileID: 7009394537002066026}
   modelEnemy: {fileID: 8499019802096867106}
+--- !u!114 &6508608080102481117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2551748411943547593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a20d6d65ea9ef84c86e5107840645c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: 2
+  positionToDestoryAndHurt: 4
+  dataEnemy: {fileID: 11400000, guid: 59120cd2c7343a346bda7e99a0128816, type: 2}
 --- !u!1001 &5052247495519875095
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,8 +12,9 @@ namespace grecty489
         [Header("基本資料")]
         [SerializeField, Range(0, 50)]
         private float Speed = 10.5f;
-        [SerializeField]
-        private int countShootMarble = 10;
+ 
+        public int countShootMarble = 10;
+
         [SerializeField, Range(0, 5000)]
         private int SpeedMarble = 1500;
         [SerializeField, Range(0, 3)]
@@ -32,7 +33,11 @@ namespace grecty489
 
         private string perAttact = "觸發攻擊";
         private Animator ani;
-        private bool isShooted;
+
+        /// <summary>
+        /// 是否已經發射
+        /// </summary>
+        public bool isShooted;
 
         /// <summary>
         /// 本回合要增加的彈珠數量

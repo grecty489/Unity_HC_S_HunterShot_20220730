@@ -37,7 +37,7 @@ namespace grecty489
         /// <summary>
         /// 生成敵人
         /// </summary>
-        private void spwanEnemy() 
+        public void spwanEnemy() 
         {
             int randomCount = Random.Range(minEnemy, maxEnemy + 1);
             print("<color=blue>敵人隨機數量：" + randomCount + "</color>");

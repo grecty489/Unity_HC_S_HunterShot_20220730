@@ -11,6 +11,8 @@ namespace grecty489
         private float baseAttack = 100;
         [SerializeField, Header("玩家攻擊力爆擊率"), Range(0f, 1f)]
         private float baseCritProbability = 0.5f;
+        [Header("玩家血量"), Range(0f, 5000f)]
+        public float hp = 1500;
 
         // 屬性 Property
         // 與欄位很相似，儲存資料，可以設定存取權限

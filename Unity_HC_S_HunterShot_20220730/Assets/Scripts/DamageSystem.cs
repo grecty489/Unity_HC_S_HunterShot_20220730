@@ -15,15 +15,20 @@ namespace grecty489
         private GameObject prefabDamage;
         [SerializeField, Header("傷害值位移")]
         private Vector3 offsetDamge;
-        [SerializeField, Header("資料")]
-        private DataEnemy dataEnemy;
         [SerializeField, Header("動畫控制器")]
         private Animator ani;
         [SerializeField, Header("血條")]
         private Image imgHp;
         [SerializeField, Header("文字血量")]
         private TextMeshProUGUI textHp;
-        [SerializeField, Header("碰撞器")]
+
+        [SerializeField, Header("是否為玩家物件")]
+        private bool isPlayer;
+
+        [Space(20)]
+        [SerializeField, Header("怪物資料")]
+        private DataEnemy dataEnemy;
+        [SerializeField, Header("怪物碰撞器")]
         private BoxCollider boxCollider;
         [SerializeField, Header("怪物模型")]
         private GameObject modelEnemy;
@@ -36,16 +41,23 @@ namespace grecty489
         private PlayerData playerData;
         #endregion
 
+        private TurnSystem TurnSystem;
+        private ControlSystem ControlSystem;
 
         #region 事件
         private void Awake()
         {
-            hp = dataEnemy.hp;
+            TurnSystem = FindObjectOfType<TurnSystem>();
+            ControlSystem = FindObjectOfType<ControlSystem>();
+            playerData = GameObject.Find("士兵").GetComponent<PlayerData>();
+
+            if (!isPlayer) hp = dataEnemy.hp;
+            else if (isPlayer) hp = playerData.hp;
+
             hpMax = hp;
             UpdateUI();
 
             // SpawnDamegeObject();
-            playerData = GameObject.Find("士兵").GetComponent<PlayerData>();
         }
 
         // 碰撞開始事件：兩個物件碰撞時執行一次
@@ -74,9 +86,27 @@ namespace grecty489
         #endregion
 
         /// <summary>
+        /// 玩家受到傷害
+        /// </summary>
+        /// <param name="damage">傷害值</param>
+        public void PlayerGetDamage(float damage = 0)
+        {
+            SpawnDamegeObject(damage);
+        }
+
+        /// <summary>
+        /// 玩家死亡
+        /// </summary>
+        private void PlayerDead()
+        {
+            TurnSystem.FadeInFinal("關卡失敗..");
+            ControlSystem.enabled = false;
+        }
+
+        /// <summary>
         /// 生成傷害值物件
         /// </summary>
-        private void SpawnDamegeObject()
+        private void SpawnDamegeObject(float damage = 0)
         {
             GameObject tempDamage = Instantiate(
                 prefabDamage,
@@ -84,7 +114,11 @@ namespace grecty489
                 Quaternion.Euler(60, 0, 0));
 
             textDamage = tempDamage.transform.Find("文字傷害值").GetComponent<TextMeshProUGUI>();
+
             float attack = playerData.attack;
+
+            if (isPlayer) attack = damage;
+
             textDamage.text ="-" + attack;
             Damage(attack);
 
@@ -110,6 +144,12 @@ namespace grecty489
         private void Dead()
         {
             hp = 0;
+
+            if (isPlayer)
+            {
+                PlayerDead();
+                return;               //如果 是 玩家就跳出
+            }
 
             boxCollider.enabled = false;        // 關閉怪物格子的碰撞器
             modelEnemy.SetActive(false);        // 隱藏怪物模型
